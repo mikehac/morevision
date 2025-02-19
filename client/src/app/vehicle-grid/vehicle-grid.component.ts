@@ -23,7 +23,7 @@ export class VehicleGridComponent {
   private gridApi!: GridApi<Vehicle>;
 
   newVehicleForm = new FormGroup({
-    id: new FormControl(''),
+    id: new FormControl(0),
     licensePlate: new FormControl(''),
     manufacturer: new FormControl(''),
     model: new FormControl(''),
