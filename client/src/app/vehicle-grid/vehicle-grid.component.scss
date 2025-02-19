@@ -12,10 +12,6 @@
   height: 80%;
 }
 
-button {
-  margin-top: 10px;
-}
-
 .modal {
   display: none;
   position: fixed;
@@ -103,4 +99,9 @@ form {
   select {
     width: 50%;
   }
+}
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px auto;
 }

@@ -32,15 +32,6 @@ export class VehicleGridComponent {
 
   isModalOpen = false;
   vehicles!: Vehicle[];
-  newVehicle: Vehicle = {
-    id: '',
-    licensePlate: '',
-    manufacturer: '',
-    model: '',
-    status: '',
-    createdAt: '',
-    updatedAt: '',
-  };
 
   colDefs: ColDef<Vehicle>[] = [
     { field: 'id' },
@@ -84,22 +75,15 @@ export class VehicleGridComponent {
     this.isModalOpen = false;
   }
 
-  async createVehicle(event: Event) {
-    event.preventDefault();
+  async createVehicle() {
     // Logic to create a new vehicle
-    (await this.vehicleService.addVehicle(this.newVehicle)).subscribe(() => {
-      this.loadVehicles();
+    (await this.vehicleService.addVehicle(this.newVehicleForm.value)).subscribe(
+      () => {
+        this.loadVehicles();
+        this.newVehicleForm.reset();
 
-      this.newVehicle = {
-        id: '',
-        licensePlate: '',
-        manufacturer: '',
-        model: '',
-        status: '',
-        createdAt: '',
-        updatedAt: '',
-      };
-      this.closeModal();
-    });
+        this.closeModal();
+      }
+    );
   }
 }
