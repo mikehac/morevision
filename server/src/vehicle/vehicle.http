@@ -1,0 +1,28 @@
+### Create new vehicle
+POST http://localhost:3000/vehicle
+Content-Type: application/json
+
+{
+  "licensePlate": "987-65-432",
+  "manufacturer": "Skoda",
+  "model": "Oktavia",
+  "status":"inactive"
+}
+
+### Update vehicle
+PATCH http://localhost:3000/vehicle/1
+Content-Type: application/json
+
+{
+  "model": "Yaris",
+  "status":"active"
+}
+
+### Delete vehicle
+DELETE http://localhost:3000/vehicle/13
+
+### Get all vehicles
+GET http://localhost:3000/vehicle
+
+### Get all vehicles
+GET http://localhost:3000/vehicle?status=inactive

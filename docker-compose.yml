@@ -1,0 +1,44 @@
+services:
+  server:
+    image: server
+    container_name: server
+    build:
+      context: .
+      dockerfile: ./server/dockerfile
+    networks:
+      - innernetwork
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASS: postgres
+      DB_NAME: vehicledb
+    ports:
+      - "3000:3000"
+    expose:
+      - 3000
+    depends_on:
+      - db
+  db:
+    container_name: postgres
+    image: postgres
+    networks:
+      - innernetwork
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - data-1:/var/lib/postgresql/data
+volumes:
+  data-1:
+    driver: local
+    driver_opts:
+      type: none
+      device: C:/volumes/data/postgres
+      o: bind
+networks:
+  innernetwork:
+    driver: bridge
