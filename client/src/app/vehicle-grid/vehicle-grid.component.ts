@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
@@ -12,14 +12,21 @@ import {
   type Module,
 } from 'ag-grid-community';
 import { Vehicle, VehicleService } from '../vehicle.service';
+
 @Component({
   selector: 'app-vehicle-grid',
   standalone: true,
   imports: [CommonModule, AgGridAngular, ReactiveFormsModule],
   templateUrl: './vehicle-grid.component.html',
   styleUrls: ['./vehicle-grid.component.scss'],
+  providers: [DatePipe],
 })
 export class VehicleGridComponent {
+  constructor(
+    private vehicleService: VehicleService,
+    private datePipe: DatePipe
+  ) {}
+
   private gridApi!: GridApi<Vehicle>;
 
   newVehicleForm = new FormGroup({
@@ -34,25 +41,38 @@ export class VehicleGridComponent {
   vehicles!: Vehicle[];
 
   colDefs: ColDef<Vehicle>[] = [
-    { field: 'id' },
+    { field: 'id', width: 10, minWidth: 10 },
     { field: 'licensePlate' },
     { field: 'manufacturer' },
     { field: 'model' },
     { field: 'status' },
-    { field: 'createdAt' },
-    { field: 'updatedAt' },
+    {
+      field: 'createdAt',
+      valueFormatter: (params) =>
+        params.value
+          ? this.datePipe.transform(params.value, 'dd/MM/yyyy') || ''
+          : '',
+    },
+    {
+      field: 'updatedAt',
+      valueFormatter: (params) =>
+        params.value
+          ? this.datePipe.transform(params.value, 'dd/MM/yyyy') || ''
+          : '',
+    },
   ];
+
   defaultColDef: ColDef = {
     flex: 1,
-    minWidth: 100,
+    // minWidth: 100,
+    cellStyle: { textAlign: 'left' }, // Align text to the left
   };
+
   rowSelection: RowSelectionOptions | 'single' | 'multiple' = {
     mode: 'singleRow',
   };
 
   modules: Module[] = [ClientSideRowModelModule];
-
-  constructor(private vehicleService: VehicleService) {}
 
   async onGridReady(params: GridReadyEvent<Vehicle>) {
     this.gridApi = params.api;

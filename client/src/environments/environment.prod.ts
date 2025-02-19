@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://prod-api.example.com',
+  apiUrl: 'https://server:3000',
   featureToggle: false,
 };
