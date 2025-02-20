@@ -99,7 +99,6 @@ pgtools - PostgreSQL tools for Node.js
 
 - [Prettier](https://prettier.io/) - Code formatter
 - [ESLint](https://eslint.org/) - Linting utility for JavaScript and TypeScript
-- [Jest](https://jestjs.io/) - JavaScript Testing Framework
 
 ## Environment Variables
 
