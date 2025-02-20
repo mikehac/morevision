@@ -104,4 +104,9 @@ form {
   display: flex;
   justify-content: space-between;
   margin: 20px auto;
+  padding: 0 5px;
+  div span {
+    font-weight: bold;
+    padding-right: 15px;
+  }
 }

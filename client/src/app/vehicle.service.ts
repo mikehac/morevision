@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
 
@@ -10,14 +10,15 @@ export class VehicleService {
 
   constructor(private http: HttpClient) {}
 
-  async getVehicles() {
-    return await this.http.get<Vehicle[]>(this.baseUrl);
+  async getVehicles(status: 'all' | 'active' | 'inactive' = 'all') {
+    const params = new HttpParams().set('status', status);
+    return await this.http.get<Vehicle[]>(this.baseUrl, { params });
   }
   async deleteVehicle(id: any) {
-    console.log('deleteVehicle', id);
+    return await this.http.delete(`${this.baseUrl}/${id}`);
   }
   async updateVehicle(vehicle: any) {
-    console.log('updateVehicle', vehicle);
+    return await this.http.patch(`${this.baseUrl}/${vehicle.id}`, vehicle);
   }
   async addVehicle(vehicle: any) {
     return await this.http.post(this.baseUrl, vehicle);
@@ -25,7 +26,7 @@ export class VehicleService {
 }
 
 export interface Vehicle {
-  id: string;
+  id: number;
   licensePlate: string;
   manufacturer: string;
   model: string;
