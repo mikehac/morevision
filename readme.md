@@ -1,6 +1,7 @@
 # Vehicle Fleet Application
 
-This project is a Vehicle Fleet Management application built with Angular for the client-side and NestJS for the server-side. The application is containerized using Docker and Docker Compose.
+This project is a Vehicle Fleet Management application built with Angular for the client-side and NestJS for the server-side.
+The application is containerized using Docker and Docker Compose.
 
 ## Prerequisites
 
