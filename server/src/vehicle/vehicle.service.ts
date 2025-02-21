@@ -5,7 +5,7 @@ import {
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Vehicle } from './vehicle.entity';
+import { Vehicle } from '../entities/vehicle.entity';
 import { VehicleCreateDto } from './dto/vehicle.create.dto';
 import { VehicleUpdateDto } from './dto/vehicle.update.dto';
 import { Logger } from '@nestjs/common';

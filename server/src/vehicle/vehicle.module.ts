@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Vehicle } from './vehicle.entity';
+import { Vehicle } from '../entities/vehicle.entity';
 import { VehicleController } from './vehicle.controller';
 import { VehicleService } from './vehicle.service';
 @Module({
@@ -14,7 +14,7 @@ import { VehicleService } from './vehicle.service';
       password: process.env.DB_PASS || 'postgres',
       database: process.env.DB_NAME || 'vehicledb',
       entities: [Vehicle],
-      synchronize: true,
+      synchronize: true, //TODO: Set to false in production
     }),
   ],
   controllers: [VehicleController],
