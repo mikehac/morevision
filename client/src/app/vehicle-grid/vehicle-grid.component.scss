@@ -93,13 +93,23 @@ form {
     display: flex;
     width: 80%;
     justify-content: space-between;
+    label {
+      width: 80%;
+      padding-right: 15px;
+    }
   }
-
-  input,
-  select {
-    width: 50%;
+  nz-input-group {
+    width: 100%;
+    nz-select,
+    input {
+      width: 100%;
+    }
+    nz-select {
+      border: 1px solid;
+    }
   }
 }
+
 .actions {
   display: flex;
   justify-content: space-between;
@@ -109,4 +119,11 @@ form {
     font-weight: bold;
     padding-right: 15px;
   }
+}
+
+.error {
+  color: #ff4d4f; /* Ant Design error red */
+  font-size: 12px;
+  margin-top: 5px;
+  display: block;
 }
