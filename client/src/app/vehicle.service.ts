@@ -14,12 +14,15 @@ export class VehicleService {
     const params = new HttpParams().set('status', status);
     return await this.http.get<Vehicle[]>(this.baseUrl, { params });
   }
+
   async deleteVehicle(id: any) {
     return await this.http.delete(`${this.baseUrl}/${id}`);
   }
+
   async updateVehicle(vehicle: any) {
     return await this.http.patch(`${this.baseUrl}/${vehicle.id}`, vehicle);
   }
+
   async addVehicle(vehicle: any) {
     return await this.http.post(this.baseUrl, vehicle);
   }
