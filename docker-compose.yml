@@ -41,6 +41,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: vehicledb
     ports:
       - "5432:5432"
     volumes:
@@ -56,3 +57,9 @@ volumes:
 networks:
   innernetwork:
     driver: bridge
+init-script:
+  image: alpine:latest
+  volumes:
+    - .:/app
+  working_dir: /app
+  entrypoint: ["sh", "-c", "chmod +x ./create_postgres_volume.sh && ./create_postgres_volume.sh"]
