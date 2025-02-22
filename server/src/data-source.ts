@@ -12,7 +12,7 @@ export const AppDataSource = new DataSource({
   entities: [Vehicle],
   migrations: ['src/migrations/*.ts'], // Ensures migration files are recognized
   synchronize: false, // Keep false in production
-  logging: true,
+  logging: false, // Keep false in production
 });
 
 if (require.main === module) {

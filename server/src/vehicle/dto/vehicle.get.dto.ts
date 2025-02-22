@@ -8,6 +8,6 @@ export class VehicleGetDto {
     example: 'active',
   })
   @IsOptional()
-  @IsIn(['active', 'inactive'])
-  status?: 'active' | 'inactive';
+  @IsIn(['all', 'active', 'inactive'])
+  status?: 'all' | 'active' | 'inactive';
 }

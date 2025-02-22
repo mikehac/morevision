@@ -13,6 +13,8 @@ services:
       - 80
     depends_on:
       - server
+    restart: always
+
   server:
     image: server
     container_name: server
@@ -21,18 +23,16 @@ services:
       dockerfile: ./server/dockerfile
     networks:
       - innernetwork
-    environment:
-      DB_HOST: db
-      DB_PORT: 5432
-      DB_USER: postgres
-      DB_PASS: postgres
-      DB_NAME: vehicledb
+    env_file:
+      - .env
     ports:
       - "3000:3000"
     expose:
       - 3000
     depends_on:
       - db
+    restart: always
+
   db:
     container_name: postgres
     image: postgres
@@ -41,17 +41,17 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: postgres
     ports:
       - "5432:5432"
     volumes:
       - data-1:/var/lib/postgresql/data
+    restart: always
 volumes:
   data-1:
     driver: local
     driver_opts:
       type: none
-      device: C:/volumes/data/postgres
+      device: ${POSTGRES_VOLUME_PATH}
       o: bind
 networks:
   innernetwork:
