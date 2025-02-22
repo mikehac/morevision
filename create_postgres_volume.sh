@@ -14,8 +14,8 @@ fi
 # Create the volume directory if it doesn't exist
 if [ ! -d "$POSTGRES_VOLUME_PATH" ]; then
     echo "Creating PostgreSQL volume directory at: $POSTGRES_VOLUME_PATH"
-    mkdir -p "$POSTGRES_VOLUME_PATH"
-    chmod 755 "$POSTGRES_VOLUME_PATH"
+    sudo mkdir -p "$POSTGRES_VOLUME_PATH"
+    sudo chmod 755 "$POSTGRES_VOLUME_PATH"
 else
     echo "PostgreSQL volume directory already exists at: $POSTGRES_VOLUME_PATH"
 fi
