@@ -14,7 +14,7 @@ import { VehicleService } from './vehicle.service';
       password: process.env.DB_PASS || 'postgres',
       database: process.env.DB_NAME || 'vehicledb',
       entities: [Vehicle],
-      synchronize: true, //TODO: Set to false in production
+      synchronize: false,
     }),
   ],
   controllers: [VehicleController],
