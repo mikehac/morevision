@@ -1,6 +1,7 @@
 # Vehicle Fleet Application
 
 This project is a Vehicle Fleet Management application built with Angular for the client-side and NestJS for the server-side.
+The data is saved in Postgres db, running on docker container.
 The application is containerized using Docker and Docker Compose.
 
 ## Prerequisites
@@ -94,11 +95,6 @@ NestJS - A progressive Node.js framework
 TypeORM - ORM for TypeScript and JavaScript
 Swagger - API Documentation
 pgtools - PostgreSQL tools for Node.js
-
-### Development Tools
-
-- [Prettier](https://prettier.io/) - Code formatter
-- [ESLint](https://eslint.org/) - Linting utility for JavaScript and TypeScript
 
 ## Environment Variables
 
