@@ -1,11 +1,13 @@
 import { ApiPropertyOptional } from '@nestjs/swagger';
+import { IsIn, IsOptional } from 'class-validator';
 
-//TODO: Validate that status is either 'active' or 'inactive'
 export class VehicleGetDto {
   @ApiPropertyOptional({
     required: false,
     description: 'License plate of the vehicle',
     example: 'active',
   })
+  @IsOptional()
+  @IsIn(['active', 'inactive'])
   status?: 'active' | 'inactive';
 }

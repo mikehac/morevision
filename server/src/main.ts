@@ -1,11 +1,12 @@
 import { NestFactory } from '@nestjs/core';
 import { VehicleModule } from './vehicle/vehicle.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(VehicleModule);
   app.enableCors();
-
+  app.useGlobalPipes(new ValidationPipe());
   // Swagger configuration
   const config = new DocumentBuilder()
     .setTitle('Vehicle Fleet API')
