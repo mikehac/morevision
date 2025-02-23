@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the folder variable
-FOLDER_PATH="/volumes_postgres"
+FOLDER_PATH="./volumes_postgres"
 
 # Check if the folder exists
 if [ ! -d "$FOLDER_PATH" ]; then
