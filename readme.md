@@ -22,7 +22,8 @@ Before you begin, ensure you have the following tools installed on your system:
    ```
 2. **Build and run the containers**:
    ```sh
-   docker-compose up --build
+   - chmod +x start.sh
+   - sudo ./start.sh
    ```
 3. **Access the application**:
    - Client: http://localhost
