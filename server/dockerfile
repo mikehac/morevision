@@ -16,8 +16,14 @@ COPY ./server .
 # Build the NestJS application
 RUN npm run build
 
+# Copy the entrypoint script
+COPY ./server/entrypoint.sh /app/entrypoint.sh
+
+# Make the entrypoint script executable
+RUN chmod +x /app/entrypoint.sh
+
 # Expose the application port
 EXPOSE 3000
 
-# Start the application
-CMD ["npm", "run", "start:prod"]
+# Use the entrypoint script to start the application
+CMD ["/app/entrypoint.sh"]
